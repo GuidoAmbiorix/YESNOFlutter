@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-class MyMessageBubble extends StatefulWidget {
-  const MyMessageBubble({super.key});
+import '../../../domain/entities/message.dart';
 
-  @override
-  State<MyMessageBubble> createState() => _MyMessageBubbleState();
-}
+class MyMessageBubble extends StatelessWidget {
+  final Message message;
 
-class _MyMessageBubbleState extends State<MyMessageBubble> {
+  const MyMessageBubble({super.key, required this.message});
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -18,11 +16,11 @@ class _MyMessageBubbleState extends State<MyMessageBubble> {
         Container(
           decoration: BoxDecoration(
               color: colors.primary, borderRadius: BorderRadius.circular(20)),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              'Laboris duis dolore',
-              style: TextStyle(color: Colors.white),
+              message.text,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
